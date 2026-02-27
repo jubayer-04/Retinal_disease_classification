@@ -1,4 +1,6 @@
-streamlit==1.31.0
-numpy==1.26.4
+streamlit
+numpy
 pillow
+matplotlib
+tflite-runtime
 gdown
