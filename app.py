@@ -1,6 +1,5 @@
 import streamlit as st
 import numpy as np
-from matplotlib import pyplot as plt
 from PIL import Image
 from tflite_runtime.interpreter import Interpreter
 import gdown
@@ -68,10 +67,5 @@ if uploaded_file is not None:
 
         st.subheader("Class Confidence Levels")
 
-        fig, ax = plt.subplots()
-        ax.bar(class_names, probabilities)
-        ax.set_ylabel("Confidence")
-        ax.set_ylim([0,1])
-        plt.xticks(rotation=45)
+        fst.bar_chart(probabilities)
 
-        st.pyplot(fig)
