@@ -2,8 +2,6 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 from tflite_runtime.interpreter import Interpreter
-import gdown
-import os
 
 st.set_page_config(page_title="Retinal Disease Classification", layout='centered')
 st.title("Retinal Image Classification")
@@ -11,21 +9,11 @@ st.title("Retinal Image Classification")
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
 # -----------------------------
-# Google Drive Download
-# -----------------------------
-MODEL_PATH = "retina_efficientnetv2b3.tflite"
-FILE_ID = "PASTE_YOUR_FILE_ID_HERE"
-
-if not os.path.exists(MODEL_PATH):
-    url = f"https://drive.google.com/uc?id={FILE_ID}"
-    gdown.download(url, MODEL_PATH, quiet=False)
-
-# -----------------------------
 # Load TFLite Model
 # -----------------------------
 @st.cache_resource
 def load_model():
-    interpreter = Interpreter(model_path=MODEL_PATH)
+    interpreter = Interpreter(model_path="retina_efficientnetv2b3.tflite")
     interpreter.allocate_tensors()
     return interpreter
 
@@ -38,7 +26,7 @@ output_details = interpreter.get_output_details()
 # -----------------------------
 uploaded_file = st.file_uploader(
     "Upload a Retinal Fundus Image",
-    type=['jpg','png','jpeg']
+    type=['jpg', 'png', 'jpeg']
 )
 
 if uploaded_file is not None:
@@ -47,6 +35,7 @@ if uploaded_file is not None:
     image = image.resize((224, 224))
     st.image(image, caption='Uploaded Image', width=500)
 
+    # Preprocessing (adjust if training was different)
     image = np.array(image) / 255.0
     image = np.expand_dims(image, axis=0).astype(np.float32)
 
@@ -67,5 +56,6 @@ if uploaded_file is not None:
 
         st.subheader("Class Confidence Levels")
 
-        fst.bar_chart(probabilities)
-
+        # Streamlit built-in bar chart (no matplotlib needed)
+        chart_data = {class_names[i]: float(probabilities[i]) for i in range(len(class_names))}
+        st.bar_chart(chart_data)
