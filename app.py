@@ -6,7 +6,7 @@ from huggingface_hub import hf_hub_download
 from tensorflow.keras.applications.efficientnet_v2 import preprocess_input
 import matplotlib.pyplot as plt
 
-left, center, right = st.columns([1,2,1])
+
 
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
@@ -30,9 +30,23 @@ with st.sidebar.expander("Model Details"):
     st.write("Output Shape:", model.output_shape)
     st.write("Total Parameters:", f"{model.count_params():,}")
     st.write("Classes:", class_names)
+    
+st.write("All classes are: ", class_names)
+st.markdown("## Sample Retinal Images")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.image(Image.open("samples/cataract.jpg"), caption="Cataract", use_column_width=True)
+    st.image(Image.open("samples/glaucoma.jpg"), caption="Glaucoma", use_column_width=True)
+
+with col2:
+    st.image(Image.open("samples/diabetic_retinopathy.jpg"), caption="Diabetic Retinopathy", use_column_width=True)
+    st.image(Image.open("samples/normal.jpg"), caption="Normal", use_column_width=True)
+
 
 uploaded_file = st.file_uploader("Upload Fundus Retinal Image", type=["jpg", "png", "jpeg"])
-st.write("All classes are: ", class_names)
+
 
 if uploaded_file:
     image = Image.open(uploaded_file).resize((224, 224))
@@ -108,6 +122,7 @@ st.text(report_text)
 
 st.subheader("Model Description")
 st.text("We have worked with EfficientNetV2B3 model which is a convolutional neural network architecture that employs fused MBConv blocks and compound scaling to optimize accuracy–efficiency trade-offs while reducing training time. It leverages progressive learning and depth–width–resolution scaling to improve feature representation with fewer parameters. In this work, the model is fine-tuned via transfer learning on retinal fundus images for robust multiclass disease classification.")
+
 
 
 
