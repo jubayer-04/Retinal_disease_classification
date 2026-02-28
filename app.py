@@ -50,7 +50,10 @@ with col4:
     st.image(Image.open("samples/normal.jpg"), caption="Normal", width=150)
 
 
+patient_name = st.text_input("Enter Patient Name: ")
+
 uploaded_file = st.file_uploader("Upload Fundus Retinal Image", type=["jpg", "png", "jpeg"])
+
 
 
 if uploaded_file:
@@ -179,6 +182,9 @@ def generate_pdf(predicted_class, confidence, image_path):
 
     elements.append(Paragraph("Retinal Disease Detection Report", styles["Heading1"]))
     elements.append(Spacer(1, 0.3 * inch))
+    elements.append(Paragraph(f"<b>Patient Name:</b> {patient_name}", styles["Normal"]))
+    elements.append(Paragraph(f"<b>Date:</b> {report_date}", styles["Normal"]))
+    elements.append(Spacer(1, 0.3 * inch))
 
     elements.append(Paragraph(f"<b>Predicted Class:</b> {predicted_class}", styles["Normal"]))
     elements.append(Paragraph(f"<b>Confidence:</b> {confidence:.2f}%", styles["Normal"]))
@@ -215,7 +221,8 @@ if "predicted_class" in st.session_state:
         pdf_file = generate_pdf(
             predicted_class,
             confidence * 100,
-            temp_file.name
+            temp_file.name,
+            patient_name
         )
 
         st.session_state["pdf_file"] = pdf_file
@@ -228,6 +235,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
