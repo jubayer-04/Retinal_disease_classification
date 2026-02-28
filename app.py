@@ -76,9 +76,10 @@ report_text = f"""
 
 
 #st.text(report_text)
-with col2:
+with col1.2:
     st.subheader("Model Performance (Test Set)")
     st.text(report_text)
+
 
 
 
