@@ -31,7 +31,7 @@ with st.sidebar.expander("Model Details"):
     st.write("Total Parameters:", f"{model.count_params():,}")
     st.write("Classes:", class_names)
 
-uploaded_file = st.file_uploader("Upload Retinal Image", type=["jpg", "png", "jpeg"])
+uploaded_file = st.file_uploader("Upload Fundus Retinal Image", type=["jpg", "png", "jpeg"])
 st.write("All classes are: ", class_names)
 
 if uploaded_file:
@@ -86,6 +86,7 @@ st.text("Overall Precision: 0.9856")
 st.text("Overall Recall: 0.985")
 st.text("Overall F1 Score: 0.985")
 st.text(report_text)
+
 
 
 
