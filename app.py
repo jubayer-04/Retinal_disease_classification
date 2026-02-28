@@ -33,7 +33,13 @@ if uploaded_file:
     img_array = np.expand_dims(img_array, axis=0)
     if st.button("Predict"):
         prediction = model.predict(img_array)
-        predicted_class = np.argmax(prediction)
+        probabilitites = prediction[0]
+        class_index = np.argmax(probabilitites)
+        predicted_class = class_names[class_index]
+        confidence = np.max(probabilitites)
     
-        st.write("Prediction:", predicted_class)
+        st.subheader("predicted Result")
+        st.write(f"Predicted Class: **{predicted_class}**")
+        st.write(f"Confidence: **{confidence: .2f}**")
+
 
