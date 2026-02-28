@@ -46,7 +46,7 @@ if uploaded_file:
 
         st.subheader("Confidence for All Classes")
 
-        fig = plt.figure()
+        fig = plt.figure(figsize=(6, 4))
         plt.bar(class_names, probabilitites * 100)
         plt.xlabel("Classes")
         plt.ylabel("Confidence (%)")
@@ -54,6 +54,7 @@ if uploaded_file:
         plt.ylim(0, 100)
     
         st.pyplot(fig)
+
 
 
 
