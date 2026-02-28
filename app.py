@@ -151,28 +151,28 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 from reportlab.platypus import Table
 import tempfile
-
-def generate_pdf(predicted_class, confidence, image_path):
-
-    pdf_path = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf").name
-    doc = SimpleDocTemplate(pdf_path)
-    elements = []
-
-    styles = getSampleStyleSheet()
-    title_style = styles["Heading1"]
-
-    elements.append(Paragraph("Retinal Disease Detection Report", title_style))
-    elements.append(Spacer(1, 0.3 * inch))
-
-    elements.append(Paragraph(f"Predicted Class: {predicted_class}", styles["Normal"]))
-    elements.append(Paragraph(f"Confidence: {confidence:.2f}%", styles["Normal"]))
-    elements.append(Spacer(1, 0.3 * inch))
-
-    elements.append(RLImage(image_path, width=3*inch, height=3*inch))
-
-    doc.build(elements)
-
-    return pdf_path
+if "image" in st.session_state:
+    def generate_pdf(predicted_class, confidence, image_path):
+    
+        pdf_path = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf").name
+        doc = SimpleDocTemplate(pdf_path)
+        elements = []
+    
+        styles = getSampleStyleSheet()
+        title_style = styles["Heading1"]
+    
+        elements.append(Paragraph("Retinal Disease Detection Report", title_style))
+        elements.append(Spacer(1, 0.3 * inch))
+    
+        elements.append(Paragraph(f"Predicted Class: {predicted_class}", styles["Normal"]))
+        elements.append(Paragraph(f"Confidence: {confidence:.2f}%", styles["Normal"]))
+        elements.append(Spacer(1, 0.3 * inch))
+    
+        elements.append(RLImage(image_path, width=3*inch, height=3*inch))
+    
+        doc.build(elements)
+    
+        return pdf_path
 
 
 pdf_file = generate_pdf(predicted_class, confidence * 100, "temp_image.jpg")
@@ -184,6 +184,7 @@ with open(pdf_file, "rb") as f:
         file_name="retinal_report.pdf",
         mime="application/pdf"
     )
+
 
 
 
