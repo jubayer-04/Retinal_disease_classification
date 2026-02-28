@@ -93,7 +93,7 @@ if uploaded_file:
             st.text("Suggestion: No major abnormalities detected. Continue regular eye checkups and maintain healthy eye care habits.")
 
         st.subheader("Disclaimer:")
-        st.text("**This result is AI-assisted and not a medical diagnosis. Please consult a qualified doctor for confirmation. Remember Ai can make mistakes...! Don't trust it blindly......**")
+        st.markdown("**This result is AI-assisted and not a medical diagnosis. Please consult a qualified doctor for confirmation. Remember Ai can make mistakes...! Don't trust it blindly......**")
             
     
         st.subheader("Confidence for All Classes")
@@ -139,6 +139,7 @@ st.text(report_text)
 
 st.subheader("Model Description")
 st.text("We have worked with EfficientNetV2B3 model which is a convolutional neural network architecture that employs fused MBConv blocks and compound scaling to optimize accuracy–efficiency trade-offs while reducing training time. It leverages progressive learning and depth–width–resolution scaling to improve feature representation with fewer parameters. In this work, the model is fine-tuned via transfer learning on retinal fundus images for robust multiclass disease classification.")
+
 
 
 
