@@ -64,18 +64,20 @@ if uploaded_file:
         
         st.pyplot(fig)
 
-report = """
-                      precision  recall  f1-score  support
-cataract        0.98     0.99     0.98     1038
-diabetic_ret    1.00     1.00     1.00     1098
-glaucoma        0.96     0.95     0.96     1007
-normal          0.96     0.96     0.96     1074
-
-accuracy                            0.98    4217
+report_text = f"""
+{'Class':<22}{'Precision':<10}{'Recall':<10}{'F1-Score':<10}{'Support':<10}
+{'-'*60}
+{'cataract':<22}{0.98:<10.2f}{0.99:<10.2f}{0.98:<10.2f}{1038:<10}
+{'diabetic_retinopathy':<22}{1.00:<10.2f}{1.00:<10.2f}{1.00:<10.2f}{1098:<10}
+{'glaucoma':<22}{0.96:<10.2f}{0.95:<10.2f}{0.96:<10.2f}{1007:<10}
+{'normal':<22}{0.96:<10.2f}{0.96:<10.2f}{0.96:<10.2f}{1074:<10}
 """
+
+#st.text(report_text)
 with col2:
     st.subheader("Model Performance (Test Set)")
-    st.text(report)
+    st.text(report_text)
+
 
 
 
