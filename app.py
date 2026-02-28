@@ -139,7 +139,7 @@ st.text(report_text)
 
 st.subheader("Model Description")
 st.text("We have worked with EfficientNetV2B3 model which is a convolutional neural network architecture that employs fused MBConv blocks and compound scaling to optimize accuracy–efficiency trade-offs while reducing training time. It leverages progressive learning and depth–width–resolution scaling to improve feature representation with fewer parameters. In this work, the model is fine-tuned via transfer learning on retinal fundus images for robust multiclass disease classification.")
-
+original_image.save("temp_image.jpg")
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib import colors
@@ -172,7 +172,7 @@ def generate_pdf(predicted_class, confidence, image_path):
     return pdf_path
 
 
-pdf_file = generate_pdf(predicted_class, confidence * 100, "image.jpg")
+pdf_file = generate_pdf(predicted_class, confidence * 100, "temp_image.jpg")
 
 with open(pdf_file, "rb") as f:
     st.download_button(
@@ -181,6 +181,7 @@ with open(pdf_file, "rb") as f:
         file_name="retinal_report.pdf",
         mime="application/pdf"
     )
+
 
 
 
