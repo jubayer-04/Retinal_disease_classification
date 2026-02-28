@@ -51,6 +51,7 @@ with col4:
 
 
 patient_name = st.text_input("Enter Patient Name: ")
+age = st.text_input("Enter Patient Age: ")
 
 uploaded_file = st.file_uploader("Upload Fundus Retinal Image", type=["jpg", "png", "jpeg"])
 
@@ -177,7 +178,7 @@ from datetime import datetime
 import tempfile
 
 
-def generate_pdf(predicted_class, confidence, image_path, patient_name):
+def generate_pdf(predicted_class, confidence, image_path, patient_name, age):
 
     suggestion = get_suggestion(predicted_class)
 
@@ -194,6 +195,7 @@ def generate_pdf(predicted_class, confidence, image_path, patient_name):
     elements.append(Spacer(1, 0.3 * inch))
 
     elements.append(Paragraph(f"<b>Patient Name:</b> {patient_name}", styles["Normal"]))
+    elements.append(Paragraph(f"<b>Patient Age:</b> {age}", styles["Normal"]))
     elements.append(Paragraph(f"<b>Date:</b> {report_date}", styles["Normal"]))
     elements.append(Spacer(1, 0.3 * inch))
 
@@ -229,7 +231,8 @@ if "predicted_class" in st.session_state:
             predicted_class,
             confidence * 100,
             temp_file.name,
-            patient_name
+            patient_name,
+            age
         )
 
         st.session_state["pdf_file"] = pdf_file
@@ -241,6 +244,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
