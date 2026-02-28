@@ -93,13 +93,17 @@ if uploaded_file:
         st.write(f"Confidence: {confidence * 100:.2f}%")
 
         if predicted_class == 'cataract':
-            st.text("Suggestion: Possible cataract detected. Please consult an ophthalmologist for a detailed eye examination, early treatment or surgery can restore vision effectively.")
+            st.markdown("**Suggestion:**")
+            st.text("Possible cataract detected. Please consult an ophthalmologist for a detailed eye examination, early treatment or surgery can restore vision effectively.")
         elif predicted_class == "diabetic_retinopathy":
-            st.text("Suggestion: Indicators of diabetic retinopathy found. Maintain blood sugar control and consult an eye doctor for retinal evaluation and timely treatment.")
+            st.markdown("**Suggestion:**")
+            st.text("Indicators of diabetic retinopathy found. Maintain blood sugar control and consult an eye doctor for retinal evaluation and timely treatment.")
         elif predicted_class == "glaucoma":
-            st.text("Suggestion: Signs of glaucoma detected. Visit an eye specialist as soon as possible for pressure testing and treatment to prevent permanent vision loss.")
+            st.markdown("**Suggestion:**")
+            st.text("Signs of glaucoma detected. Visit an eye specialist as soon as possible for pressure testing and treatment to prevent permanent vision loss.")
         else:
-            st.text("Suggestion: No major abnormalities detected. Continue regular eye checkups and maintain healthy eye care habits.")
+            st.markdown("**Suggestion:**")
+            st.text("No major abnormalities detected. Continue regular eye checkups and maintain healthy eye care habits.")
 
         st.subheader("Disclaimer:")
         st.markdown("**This result is AI-assisted and not a medical diagnosis. Please consult a qualified doctor for confirmation. Remember Ai can make mistakes...! Don't trust it blindly......**")
@@ -159,13 +163,13 @@ from reportlab.lib.units import inch
 def get_suggestion(predicted_class):
 
     suggestions = {
-        "cataract": "Recommendation: Consult an ophthalmologist for slit-lamp examination. Cataract surgery may be considered if vision is significantly impaired.",
+        "cataract": "Possible cataract detected. Please consult an ophthalmologist for a detailed eye examination, early treatment or surgery can restore vision effectively.",
         
-        "diabetic_retinopathy": "Recommendation: Immediate retinal specialist consultation is advised. Strict glycemic control and possible laser or anti-VEGF therapy may be required.",
+        "diabetic_retinopathy": "Indicators of diabetic retinopathy found. Maintain blood sugar control and consult an eye doctor for retinal evaluation and timely treatment.",
         
-        "glaucoma": "Recommendation: Perform intraocular pressure (IOP) assessment and optic nerve evaluation. Early treatment with pressure-lowering medications is recommended.",
+        "glaucoma": "Signs of glaucoma detected. Visit an eye specialist as soon as possible for pressure testing and treatment to prevent permanent vision loss.",
         
-        "normal": "Recommendation: No major abnormality detected. Maintain routine annual eye examinations and healthy lifestyle practices."
+        "normal": "No major abnormalities detected. Continue regular eye checkups and maintain healthy eye care habits."
     }
 
     return suggestions.get(predicted_class.lower(), "Consult an eye specialist for further evaluation.")
@@ -251,6 +255,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
