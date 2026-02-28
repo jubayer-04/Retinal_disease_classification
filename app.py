@@ -181,6 +181,16 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch
 from datetime import datetime
 import tempfile
+from reportlab.lib import colors
+from reportlab.platypus import ParagraphStyle
+styles = getSampleStyleSheet()
+caption_style = ParagraphStyle(
+    name="CaptionStyle",
+    parent=styles["Normal"],
+    fontSize=9,
+    textColor=colors.black,
+    alignment=1  # center alignment
+)
 
 from zoneinfo import ZoneInfo
 
@@ -259,6 +269,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
