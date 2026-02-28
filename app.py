@@ -41,7 +41,7 @@ if uploaded_file:
         st.write(f"Predicted Class: **{predicted_class}**")
         st.write(f"Confidence: {confidence * 100:.2f}%")
         st.write(class_names)
-        st.write(probabilities)
+        
 
         st.subheader("Confidence for All Classes")
 
@@ -53,6 +53,7 @@ if uploaded_file:
         plt.ylim(0, 100)
     
         st.pyplot(fig)
+
 
 
 
