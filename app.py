@@ -47,10 +47,10 @@ if uploaded_file:
         class_index = np.argmax(probabilitites)
         predicted_class = class_names[class_index]
         confidence = np.max(probabilitites)
-        with col1:
-            st.subheader("predicted Result")
-            st.write(f"Predicted Class: **{predicted_class}**")
-            st.write(f"Confidence: {confidence * 100:.2f}%")
+        
+        st.subheader("predicted Result")
+        st.write(f"Predicted Class: **{predicted_class}**")
+        st.write(f"Confidence: {confidence * 100:.2f}%")
             
     
         st.subheader("Confidence for All Classes")
@@ -65,7 +65,7 @@ if uploaded_file:
         st.pyplot(fig)
 
 report = """
-              precision  recall  f1-score  support
+                      precision  recall  f1-score  support
 cataract        0.98     0.99     0.98     1038
 diabetic_ret    1.00     1.00     1.00     1098
 glaucoma        0.96     0.95     0.96     1007
@@ -76,6 +76,7 @@ accuracy                            0.98    4217
 with col2:
     st.subheader("Model Performance (Test Set)")
     st.text(report)
+
 
 
 
