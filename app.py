@@ -175,9 +175,14 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch
 from datetime import datetime
 import tempfile
+
+
 def generate_pdf(predicted_class, confidence, image_path, patient_name):
 
     suggestion = get_suggestion(predicted_class)
+
+    # Generate current date properly
+    report_date = datetime.now().strftime("%d %B %Y")
 
     pdf_path = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf").name
     doc = SimpleDocTemplate(pdf_path)
@@ -187,6 +192,7 @@ def generate_pdf(predicted_class, confidence, image_path, patient_name):
 
     elements.append(Paragraph("Retinal Disease Detection Report", styles["Heading1"]))
     elements.append(Spacer(1, 0.3 * inch))
+
     elements.append(Paragraph(f"<b>Patient Name:</b> {patient_name}", styles["Normal"]))
     elements.append(Paragraph(f"<b>Date:</b> {report_date}", styles["Normal"]))
     elements.append(Spacer(1, 0.3 * inch))
@@ -200,14 +206,11 @@ def generate_pdf(predicted_class, confidence, image_path, patient_name):
     elements.append(Paragraph(suggestion, styles["Normal"]))
     elements.append(Spacer(1, 0.3 * inch))
 
-    # Add image into PDF
-    elements.append(RLImage(image_path, width=3*inch, height=3*inch))
+    elements.append(RLImage(image_path, width=3 * inch, height=3 * inch))
 
     doc.build(elements)
 
     return pdf_path
-
-
 # ------------------ After Prediction ------------------
 import tempfile
 
@@ -217,7 +220,6 @@ if "predicted_class" in st.session_state:
     confidence = st.session_state["confidence"]
     image = st.session_state["uploaded_image"]
 
-    # Only generate PDF once
     if "pdf_file" not in st.session_state:
 
         temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".jpg")
@@ -232,7 +234,6 @@ if "predicted_class" in st.session_state:
 
         st.session_state["pdf_file"] = pdf_file
 
-    # Use stored PDF
     with open(st.session_state["pdf_file"], "rb") as f:
         st.download_button(
             label="Download Report as PDF",
@@ -240,6 +241,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
