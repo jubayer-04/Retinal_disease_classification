@@ -33,7 +33,7 @@ with st.sidebar.expander("Model Details"):
     
 st.write("All classes are: ", class_names)
 
-st.markdown("### Sample Retinal Images")
+st.markdown("Sample Fundus Retinal Images")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -127,6 +127,7 @@ st.text(report_text)
 
 st.subheader("Model Description")
 st.text("We have worked with EfficientNetV2B3 model which is a convolutional neural network architecture that employs fused MBConv blocks and compound scaling to optimize accuracy–efficiency trade-offs while reducing training time. It leverages progressive learning and depth–width–resolution scaling to improve feature representation with fewer parameters. In this work, the model is fine-tuned via transfer learning on retinal fundus images for robust multiclass disease classification.")
+
 
 
 
