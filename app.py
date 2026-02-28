@@ -141,8 +141,13 @@ st.text(report_text)
 st.subheader("Model Description")
 st.text("We have worked with EfficientNetV2B3 model which is a convolutional neural network architecture that employs fused MBConv blocks and compound scaling to optimize accuracy–efficiency trade-offs while reducing training time. It leverages progressive learning and depth–width–resolution scaling to improve feature representation with fewer parameters. In this work, the model is fine-tuned via transfer learning on retinal fundus images for robust multiclass disease classification.")
 
-if "uploaded_image" in st.session_state:
-    st.session_state["uploaded_image"].save("temp_image.jpg")
+import tempfile
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.units import inch
+
+
+# ------------------ Suggestion Logic ------------------
 def get_suggestion(predicted_class):
 
     suggestions = {
@@ -158,11 +163,7 @@ def get_suggestion(predicted_class):
     return suggestions.get(predicted_class.lower(), "Consult an eye specialist for further evaluation.")
 
 
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.lib.units import inch
-import tempfile
-
+# ------------------ PDF Generator ------------------
 def generate_pdf(predicted_class, confidence, image_path):
 
     suggestion = get_suggestion(predicted_class)
@@ -183,21 +184,33 @@ def generate_pdf(predicted_class, confidence, image_path):
     elements.append(Paragraph("<b>Clinical Suggestion:</b>", styles["Heading3"]))
     elements.append(Spacer(1, 0.1 * inch))
     elements.append(Paragraph(suggestion, styles["Normal"]))
+    elements.append(Spacer(1, 0.3 * inch))
+
+    # Add image into PDF
+    elements.append(RLImage(image_path, width=3*inch, height=3*inch))
 
     doc.build(elements)
 
     return pdf_path
 
 
-pdf_file = generate_pdf(predicted_class, confidence * 100, temp_image_path)
+# ------------------ After Prediction ------------------
+if "uploaded_image" in st.session_state:
 
-with open(pdf_file, "rb") as f:
-    st.download_button(
-        label="Download Report as PDF",
-        data=f,
-        file_name="retinal_report.pdf",
-        mime="application/pdf"
-    )
+    temp_image = tempfile.NamedTemporaryFile(delete=False, suffix=".jpg")
+    st.session_state["uploaded_image"].save(temp_image.name)
+    temp_image_path = temp_image.name
+
+    pdf_file = generate_pdf(predicted_class, confidence * 100, temp_image_path)
+
+    with open(pdf_file, "rb") as f:
+        st.download_button(
+            label="Download Report as PDF",
+            data=f,
+            file_name="retinal_report.pdf",
+            mime="application/pdf"
+        )
+
 
 
 
