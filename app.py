@@ -170,6 +170,11 @@ def get_suggestion(predicted_class):
 
 
 # ------------------ PDF Generator ------------------
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.units import inch
+from datetime import datetime
+import tempfile
 def generate_pdf(predicted_class, confidence, image_path):
 
     suggestion = get_suggestion(predicted_class)
@@ -235,6 +240,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
