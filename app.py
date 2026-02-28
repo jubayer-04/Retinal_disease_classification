@@ -67,14 +67,21 @@ if uploaded_file:
     
         st.subheader("Confidence for All Classes")
     
-        fig = plt.figure(figsize=(3, 2))
-        plt.bar(class_names, probabilitites * 100)
-        plt.xlabel("Classes")
-        plt.ylabel("Confidence (%)")
-        plt.xticks(rotation=45)
+        fig = plt.figure(figsize=(3.5, 2.2))  # smaller figure
+
+        plt.bar(class_names, probabilities * 100, width=0.5)
+        
+        plt.xticks(rotation=35, fontsize=7)
+        plt.yticks(fontsize=7)
+        
+        plt.xlabel("Classes", fontsize=8)
+        plt.ylabel("Confidence (%)", fontsize=8)
+        
         plt.ylim(0, 100)
+        
         plt.tight_layout()
-        st.pyplot(fig)
+        
+        st.pyplot(fig, use_container_width=False)
 
 report_text = f"""
 {'Class':<40}{'Precision':<10}{"|  "}{'Recall':<10}{"|  "}{'F1-Score':<10}{"|  "}{'Support':<10}
@@ -101,6 +108,7 @@ st.text(report_text)
 
 st.subheader("Model Description")
 st.text("We have worked with EfficientNetV2B3 model which is a convolutional neural network architecture that employs fused MBConv blocks and compound scaling to optimize accuracy–efficiency trade-offs while reducing training time. It leverages progressive learning and depth–width–resolution scaling to improve feature representation with fewer parameters. In this work, the model is fine-tuned via transfer learning on retinal fundus images for robust multiclass disease classification.")
+
 
 
 
