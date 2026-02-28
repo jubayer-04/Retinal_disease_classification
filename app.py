@@ -3,6 +3,7 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 from huggingface_hub import hf_hub_download
+from tensorflow.keras.applications.efficientnet_v2 import preprocess_input
 
 # ------------------------------
 # Load Model (cached)
@@ -29,7 +30,8 @@ if uploaded_file:
     image = Image.open(uploaded_file).resize((224, 224))
     st.image(image, caption="Uploaded Image")
 
-    img_array = np.array(image) / 255.0
+    img_array = np.array(image)
+    img_array = preprocess_input(image)
     img_array = np.expand_dims(img_array, axis=0)
     if st.button("Predict"):
         prediction = model.predict(img_array)
@@ -41,5 +43,6 @@ if uploaded_file:
         st.subheader("predicted Result")
         st.write(f"Predicted Class: **{predicted_class}**")
         st.write(f"Confidence: **{confidence: .2f}**")
+
 
 
