@@ -4,3 +4,4 @@ numpy
 pillow
 matplotlib
 huggingface_hub
+reportlab
