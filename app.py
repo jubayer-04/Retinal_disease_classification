@@ -27,7 +27,7 @@ if uploaded_file:
     st.image(image, caption="Uploaded Image")
 
     img_array = np.array(image)
-    img_array = preprocess_input(image)
+    img_array = preprocess_input(img_array)
     img_array = np.expand_dims(img_array, axis=0)
     if st.button("Predict"):
         prediction = model.predict(img_array)
@@ -39,6 +39,7 @@ if uploaded_file:
         st.subheader("predicted Result")
         st.write(f"Predicted Class: **{predicted_class}**")
         st.write(f"Confidence: {confidence * 100:.2f}%")
+
 
 
 
