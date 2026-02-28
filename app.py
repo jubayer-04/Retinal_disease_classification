@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
+
 @st.cache_resource
 def load_model():
     model_path = hf_hub_download(
@@ -22,6 +23,7 @@ model = load_model()
 st.title("Retinal Disease Detection")
 
 uploaded_file = st.file_uploader("Upload Retinal Image", type=["jpg", "png", "jpeg"])
+st.write("All classes are: ", classe_names)
 
 if uploaded_file:
     image = Image.open(uploaded_file).resize((224, 224))
@@ -40,7 +42,6 @@ if uploaded_file:
         st.subheader("predicted Result")
         st.write(f"Predicted Class: **{predicted_class}**")
         st.write(f"Confidence: {confidence * 100:.2f}%")
-        st.write(class_names)
         
 
         st.subheader("Confidence for All Classes")
@@ -53,6 +54,7 @@ if uploaded_file:
         plt.ylim(0, 100)
     
         st.pyplot(fig)
+
 
 
 
