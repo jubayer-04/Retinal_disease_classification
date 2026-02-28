@@ -5,6 +5,8 @@ from PIL import Image
 from huggingface_hub import hf_hub_download
 from tensorflow.keras.applications.efficientnet_v2 import preprocess_input
 
+class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
+
 # ------------------------------
 # Load Model (cached)
 # ------------------------------
@@ -43,6 +45,7 @@ if uploaded_file:
         st.subheader("predicted Result")
         st.write(f"Predicted Class: **{predicted_class}**")
         st.write(f"Confidence: **{confidence: .2f}**")
+
 
 
 
