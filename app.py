@@ -143,39 +143,53 @@ st.text("We have worked with EfficientNetV2B3 model which is a convolutional neu
 
 if "uploaded_image" in st.session_state:
     st.session_state["uploaded_image"].save("temp_image.jpg")
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage
-from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
-from reportlab.lib import colors
+def get_suggestion(predicted_class):
+
+    suggestions = {
+        "cataract": "Recommendation: Consult an ophthalmologist for slit-lamp examination. Cataract surgery may be considered if vision is significantly impaired.",
+        
+        "diabetic_retinopathy": "Recommendation: Immediate retinal specialist consultation is advised. Strict glycemic control and possible laser or anti-VEGF therapy may be required.",
+        
+        "glaucoma": "Recommendation: Perform intraocular pressure (IOP) assessment and optic nerve evaluation. Early treatment with pressure-lowering medications is recommended.",
+        
+        "normal": "Recommendation: No major abnormality detected. Maintain routine annual eye examinations and healthy lifestyle practices."
+    }
+
+    return suggestions.get(predicted_class.lower(), "Consult an eye specialist for further evaluation.")
+
+
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.pdfbase import pdfmetrics
-from reportlab.platypus import Table
 import tempfile
-if "image" in st.session_state:
-    def generate_pdf(predicted_class, confidence, image_path):
-    
-        pdf_path = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf").name
-        doc = SimpleDocTemplate(pdf_path)
-        elements = []
-    
-        styles = getSampleStyleSheet()
-        title_style = styles["Heading1"]
-    
-        elements.append(Paragraph("Retinal Disease Detection Report", title_style))
-        elements.append(Spacer(1, 0.3 * inch))
-    
-        elements.append(Paragraph(f"Predicted Class: {predicted_class}", styles["Normal"]))
-        elements.append(Paragraph(f"Confidence: {confidence:.2f}%", styles["Normal"]))
-        elements.append(Spacer(1, 0.3 * inch))
-    
-        elements.append(RLImage(image_path, width=3*inch, height=3*inch))
-    
-        doc.build(elements)
-    
-        return pdf_path
+
+def generate_pdf(predicted_class, confidence, image_path):
+
+    suggestion = get_suggestion(predicted_class)
+
+    pdf_path = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf").name
+    doc = SimpleDocTemplate(pdf_path)
+    elements = []
+
+    styles = getSampleStyleSheet()
+
+    elements.append(Paragraph("Retinal Disease Detection Report", styles["Heading1"]))
+    elements.append(Spacer(1, 0.3 * inch))
+
+    elements.append(Paragraph(f"<b>Predicted Class:</b> {predicted_class}", styles["Normal"]))
+    elements.append(Paragraph(f"<b>Confidence:</b> {confidence:.2f}%", styles["Normal"]))
+    elements.append(Spacer(1, 0.3 * inch))
+
+    elements.append(Paragraph("<b>Clinical Suggestion:</b>", styles["Heading3"]))
+    elements.append(Spacer(1, 0.1 * inch))
+    elements.append(Paragraph(suggestion, styles["Normal"]))
+
+    doc.build(elements)
+
+    return pdf_path
 
 
-pdf_file = generate_pdf(predicted_class, confidence * 100, "temp_image.jpg")
+pdf_file = generate_pdf(predicted_class, confidence * 100, temp_image_path)
 
 with open(pdf_file, "rb") as f:
     st.download_button(
@@ -184,6 +198,7 @@ with open(pdf_file, "rb") as f:
         file_name="retinal_report.pdf",
         mime="application/pdf"
     )
+
 
 
 
