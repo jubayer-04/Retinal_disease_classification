@@ -172,7 +172,7 @@ def generate_pdf(predicted_class, confidence, image_path):
     return pdf_path
 
 
-pdf_file = generate_pdf(predicted_class, confidence * 100, "temp_image.jpg")
+pdf_file = generate_pdf(predicted_class, confidence * 100, "image.jpg")
 
 with open(pdf_file, "rb") as f:
     st.download_button(
@@ -181,6 +181,7 @@ with open(pdf_file, "rb") as f:
         file_name="retinal_report.pdf",
         mime="application/pdf"
     )
+
 
 
 
