@@ -79,6 +79,9 @@ if uploaded_file:
         class_index = np.argmax(probabilitites)
         predicted_class = class_names[class_index]
         confidence = np.max(probabilitites)
+        st.session_state["predicted_class"] = predicted_class
+        st.session_state["confidence"] = confidence
+        st.session_state["uploaded_image"] = image
         
         st.subheader("Predicted Result")
         st.write(f"Predicted Class: **{predicted_class}**")
@@ -195,15 +198,30 @@ def generate_pdf(predicted_class, confidence, image_path):
 
 
 # ------------------ After Prediction ------------------
-if "uploaded_image" in st.session_state:
+import tempfile
 
-    temp_image = tempfile.NamedTemporaryFile(delete=False, suffix=".jpg")
-    st.session_state["uploaded_image"].save(temp_image.name)
-    temp_image_path = temp_image.name
+if "predicted_class" in st.session_state:
 
-    pdf_file = generate_pdf(predicted_class, confidence * 100, temp_image_path)
+    predicted_class = st.session_state["predicted_class"]
+    confidence = st.session_state["confidence"]
+    image = st.session_state["uploaded_image"]
 
-    with open(pdf_file, "rb") as f:
+    # Only generate PDF once
+    if "pdf_file" not in st.session_state:
+
+        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".jpg")
+        image.save(temp_file.name)
+
+        pdf_file = generate_pdf(
+            predicted_class,
+            confidence * 100,
+            temp_file.name
+        )
+
+        st.session_state["pdf_file"] = pdf_file
+
+    # Use stored PDF
+    with open(st.session_state["pdf_file"], "rb") as f:
         st.download_button(
             label="Download Report as PDF",
             data=f,
