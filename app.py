@@ -24,7 +24,7 @@ def load_model():
 model = load_model()
 
 
-st.title("Retinal Disease Detection")
+st.title("Retinal Disease Classification")
 with st.sidebar.expander("Model Details"):
     st.write("Input Shape:", model.input_shape)
     st.write("Output Shape:", model.output_shape)
@@ -209,7 +209,7 @@ def generate_pdf(predicted_class, confidence, image_path, patient_name, age, rep
 
     styles = getSampleStyleSheet()
 
-    elements.append(Paragraph("Retinal Disease Detection Report", styles["Heading1"]))
+    elements.append(Paragraph("Retinal Disease Classification Report", styles["Heading1"]))
     elements.append(Spacer(1, 0.3 * inch))
 
     elements.append(Paragraph(f"<b>Patient Name:</b> {patient_name}", styles["Normal"]))
@@ -271,6 +271,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
