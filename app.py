@@ -65,9 +65,9 @@ if uploaded_file:
         st.pyplot(fig)
 
 report_text = f"""
-{'Class':<40}{'-'*10}{'Precision':<10}{'-'*10}{'Recall':<10}{'-'*10}{'F1-Score':<10}{'-'*10}{'Support':<10}
+{'Class':<40}{"|"}{'Precision':<10}{"|"}{'Recall':<10}{"|"}{'F1-Score':<10}{"|"}{'Support':<10}
 {'-'*70}
-{'cataract':<40}{0.98:<10.2f}{0.99:<10.2f}{0.98:<10.2f}{1038:<10}
+{'cataract':<40}{"|"}{0.98:<10.2f}{"|"}{0.99:<10.2f}{"|"}{0.98:<10.2f}{"|"}{1038:<10}
 {'-'*70}
 {'diabetic_retinopathy':<25}{1.00:<10.2f}{1.00:<10.2f}{1.00:<10.2f}{1098:<10}
 {'-'*70}
@@ -82,6 +82,7 @@ report_text = f"""
 
 st.subheader("Model Performance (Test Set)")
 st.text(report_text)
+
 
 
 
