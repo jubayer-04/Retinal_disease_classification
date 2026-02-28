@@ -143,105 +143,6 @@ report_text = f"""
 """
 
 
-
-# ------------------ PDF Generator ------------------
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.lib.units import inch
-from datetime import datetime
-import tempfile
-from reportlab.lib import colors
-from reportlab.lib.styles import ParagraphStyle
-styles = getSampleStyleSheet()
-caption_style = ParagraphStyle(
-    name="CaptionStyle",
-    parent=styles["Normal"],
-    fontSize=9,
-    textColor=colors.black,
-    alignment=1  # center alignment
-)
-
-from zoneinfo import ZoneInfo
-
-report_date = datetime.now(ZoneInfo("Asia/Dhaka")).strftime("%d %B %Y, %I:%M %p")
-
-def generate_pdf(predicted_class, confidence, image_path, patient_name, age, report_date, gender):
-
-    suggestion = get_suggestion(predicted_class)
-
-    # Generate current date properly
-    #report_date = datetime.now().strftime("%d %B %Y")
-
-    pdf_path = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf").name
-    doc = SimpleDocTemplate(pdf_path)
-    elements = []
-
-    styles = getSampleStyleSheet()
-
-    elements.append(Paragraph("Retinal Disease Classification Report", styles["Heading1"]))
-    elements.append(Spacer(1, 0.3 * inch))
-
-    elements.append(Paragraph(f"<b>Patient Name:</b> {patient_name}", styles["Normal"]))
-    elements.append(Paragraph(f"<b>Patient Age:</b> {age}", styles["Normal"]))
-    elements.append(Paragraph(f"<b>Patient Gender:</b> {gender}", styles["Normal"]))
-    elements.append(Paragraph(f"<b>Date:</b> {report_date}", styles["Normal"]))
-    elements.append(Spacer(1, 0.3 * inch))
-
-    elements.append(Paragraph(f"<b>Predicted Class:</b> {predicted_class}", styles["Normal"]))
-    elements.append(Paragraph(f"<b>Confidence:</b> {confidence:.2f}%", styles["Normal"]))
-    elements.append(Spacer(1, 0.3 * inch))
-
-    elements.append(Paragraph("<b>Clinical Suggestion:</b>", styles["Heading3"]))
-    elements.append(Spacer(1, 0.1 * inch))
-    elements.append(Paragraph(suggestion, styles["Heading3"]))
-    elements.append(Spacer(1, 0.3 * inch))
-
-    elements.append(RLImage(image_path, width=3 * inch, height=3 * inch))
-    elements.append(Spacer(1, 0.2 * inch))
-    elements.append(Paragraph(
-    f"<i>Figure 1: {predicted_class}</i>",
-    caption_style
-))
-    elements.append(Paragraph("Disclaimer: This result is AI-assisted and not a medical diagnosis. Please consult a qualified doctor for confirmation. Remember Ai can make mistakes... So, Don't trust it blindly....", styles["Heading3"]))
-
-    doc.build(elements)
-
-    return pdf_path
-# ------------------ After Prediction ------------------
-import tempfile
-
-if "predicted_class" in st.session_state:
-
-    predicted_class = st.session_state["predicted_class"]
-    confidence = st.session_state["confidence"]
-    image = st.session_state["uploaded_image"]
-
-    if "pdf_file" not in st.session_state:
-
-        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".jpg")
-        image.save(temp_file.name)
-
-        pdf_file = generate_pdf(
-            predicted_class,
-            confidence * 100,
-            temp_file.name,
-            patient_name,
-            age,
-            report_date,
-            gender
-        )
-
-        st.session_state["pdf_file"] = pdf_file
-
-    with open(st.session_state["pdf_file"], "rb") as f:
-        st.download_button(
-            label="Download Report as PDF",
-            data=f,
-            file_name="retinal_report.pdf",
-            mime="application/pdf"
-        )
-
-
 st.subheader("Model Performance")
 st.text("Overall Accuracy: 98.5%")
 st.text("Overall Precision: 0.9856")
@@ -252,7 +153,7 @@ st.text(report_text)
 st.subheader("Model Description")
 st.text("We have worked with EfficientNetV2B3 model which is a convolutional neural network architecture that employs fused MBConv blocks and compound scaling to optimize accuracy–efficiency trade-offs while reducing training time. It leverages progressive learning and depth–width–resolution scaling to improve feature representation with fewer parameters. In this work, the model is fine-tuned via transfer learning on retinal fundus images for robust multiclass disease classification.")
 
-"""import tempfile
+import tempfile
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch"""
@@ -369,7 +270,8 @@ if "predicted_class" in st.session_state:
             data=f,
             file_name="retinal_report.pdf",
             mime="application/pdf"
-        )"""
+        )
+
 
 
 
