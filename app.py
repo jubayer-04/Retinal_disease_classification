@@ -175,7 +175,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch
 from datetime import datetime
 import tempfile
-def generate_pdf(predicted_class, confidence, image_path):
+def generate_pdf(predicted_class, confidence, image_path, patient_name):
 
     suggestion = get_suggestion(predicted_class)
 
@@ -240,6 +240,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
