@@ -7,11 +7,7 @@ from tensorflow.keras.applications.efficientnet_v2 import preprocess_input
 import matplotlib.pyplot as plt
 
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
-with st.sidebar.expander("Model Details"):
-    st.write("Input Shape:", model.input_shape)
-    st.write("Output Shape:", model.output_shape)
-    st.write("Total Parameters:", f"{model.count_params():,}")
-    st.write("Classes:", class_names)
+
 
 @st.cache_resource
 def load_model():
@@ -24,7 +20,13 @@ def load_model():
 
 model = load_model()
 
+
 st.title("Retinal Disease Detection")
+with st.sidebar.expander("Model Details"):
+    st.write("Input Shape:", model.input_shape)
+    st.write("Output Shape:", model.output_shape)
+    st.write("Total Parameters:", f"{model.count_params():,}")
+    st.write("Classes:", class_names)
 
 uploaded_file = st.file_uploader("Upload Retinal Image", type=["jpg", "png", "jpeg"])
 st.write("All classes are: ", class_names)
@@ -58,6 +60,7 @@ if uploaded_file:
         plt.ylim(0, 100)
     
         st.pyplot(fig)
+
 
 
 
