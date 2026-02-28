@@ -65,18 +65,19 @@ if uploaded_file:
         st.pyplot(fig)
 
 report_text = f"""
-{'Class':<22}{'Precision':<10}{'Recall':<10}{'F1-Score':<10}{'Support':<10}
+{'Class':<26}{'Precision':<10}{'Recall':<10}{'F1-Score':<10}{'Support':<10}
 {'-'*60}
-{'cataract':<22}{0.98:<10.2f}{0.99:<10.2f}{0.98:<10.2f}{1038:<10}
+{'cataract':<26}{0.98:<10.2f}{0.99:<10.2f}{0.98:<10.2f}{1038:<10}
 {'diabetic_retinopathy':<22}{1.00:<10.2f}{1.00:<10.2f}{1.00:<10.2f}{1098:<10}
-{'glaucoma':<22}{0.96:<10.2f}{0.95:<10.2f}{0.96:<10.2f}{1007:<10}
-{'normal':<22}{0.96:<10.2f}{0.96:<10.2f}{0.96:<10.2f}{1074:<10}
+{'glaucoma':<26}{0.96:<10.2f}{0.95:<10.2f}{0.96:<10.2f}{1007:<10}
+{'normal':<26}{0.96:<10.2f}{0.96:<10.2f}{0.96:<10.2f}{1074:<10}
 """
 
 #st.text(report_text)
 with col2:
     st.subheader("Model Performance (Test Set)")
     st.text(report_text)
+
 
 
 
