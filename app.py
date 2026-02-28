@@ -55,6 +55,7 @@ uploaded_file = st.file_uploader("Upload Fundus Retinal Image", type=["jpg", "pn
 
 if uploaded_file:
     image = Image.open(uploaded_file).resize((224, 224))
+    st.session_state["uploaded_image"] = image
     left, center, right = st.columns([1,2,1])
 
     with center:
@@ -139,7 +140,9 @@ st.text(report_text)
 
 st.subheader("Model Description")
 st.text("We have worked with EfficientNetV2B3 model which is a convolutional neural network architecture that employs fused MBConv blocks and compound scaling to optimize accuracy–efficiency trade-offs while reducing training time. It leverages progressive learning and depth–width–resolution scaling to improve feature representation with fewer parameters. In this work, the model is fine-tuned via transfer learning on retinal fundus images for robust multiclass disease classification.")
-image.save("temp_image.jpg")
+
+if "uploaded_image" in st.session_state:
+    st.session_state["uploaded_image"].save("temp_image.jpg")
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib import colors
@@ -181,6 +184,7 @@ with open(pdf_file, "rb") as f:
         file_name="retinal_report.pdf",
         mime="application/pdf"
     )
+
 
 
 
