@@ -4,6 +4,7 @@ import numpy as np
 from PIL import Image
 from huggingface_hub import hf_hub_download
 from tensorflow.keras.applications.efficientnet_v2 import preprocess_input
+import matplotlib.pyplot as plt
 
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
@@ -39,6 +40,18 @@ if uploaded_file:
         st.subheader("predicted Result")
         st.write(f"Predicted Class: **{predicted_class}**")
         st.write(f"Confidence: {confidence * 100:.2f}%")
+
+        st.subheader("Confidence for All Classes")
+
+        fig = plt.figure()
+        plt.bar(class_names, probabilities * 100)
+        plt.xlabel("Classes")
+        plt.ylabel("Confidence (%)")
+        plt.xticks(rotation=45)
+        plt.ylim(0, 100)
+    
+        st.pyplot(fig)
+
 
 
 
