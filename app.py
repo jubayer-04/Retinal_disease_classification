@@ -38,7 +38,8 @@ if uploaded_file:
     
         st.subheader("predicted Result")
         st.write(f"Predicted Class: **{predicted_class}**")
-        st.write(f"Confidence: **{confidence: .2f}**")
+        st.write(f"Confidence: {confidence: .2f*100}%")
+
 
 
 
