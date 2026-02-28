@@ -177,7 +177,9 @@ from reportlab.lib.units import inch
 from datetime import datetime
 import tempfile
 
-report_date = datetime.now().strftime("%d %B %Y, %I:%M %p")
+from zoneinfo import ZoneInfo
+
+report_date = datetime.now(ZoneInfo("Asia/Dhaka")).strftime("%d %B %Y, %I:%M %p")
 
 def generate_pdf(predicted_class, confidence, image_path, patient_name, age, report_date):
 
@@ -246,6 +248,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
