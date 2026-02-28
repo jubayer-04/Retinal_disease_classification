@@ -7,9 +7,6 @@ from tensorflow.keras.applications.efficientnet_v2 import preprocess_input
 
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
-# ------------------------------
-# Load Model (cached)
-# ------------------------------
 @st.cache_resource
 def load_model():
     model_path = hf_hub_download(
@@ -21,9 +18,6 @@ def load_model():
 
 model = load_model()
 
-# ------------------------------
-# UI
-# ------------------------------
 st.title("Retinal Disease Detection")
 
 uploaded_file = st.file_uploader("Upload Retinal Image", type=["jpg", "png", "jpeg"])
@@ -45,6 +39,7 @@ if uploaded_file:
         st.subheader("predicted Result")
         st.write(f"Predicted Class: **{predicted_class}**")
         st.write(f"Confidence: **{confidence: .2f}**")
+
 
 
 
