@@ -268,9 +268,10 @@ if "predicted_class" in st.session_state:
         st.download_button(
             label="Download Report as PDF",
             data=f,
-            file_name="{patient_name}.pdf",
+            file_name=f"{patient_name}_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
