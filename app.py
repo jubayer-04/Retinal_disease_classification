@@ -73,7 +73,7 @@ if uploaded_file:
         plt.ylabel("Confidence (%)")
         plt.xticks(rotation=45)
         plt.ylim(0, 100)
-        
+        plt.tight_layout()
         st.pyplot(fig)
 
 report_text = f"""
@@ -101,6 +101,7 @@ st.text(report_text)
 
 st.subheader("Model Description")
 st.text("We have worked with EfficientNetV2B3 model which is a convolutional neural network architecture that employs fused MBConv blocks and compound scaling to optimize accuracy–efficiency trade-offs while reducing training time. It leverages progressive learning and depth–width–resolution scaling to improve feature representation with fewer parameters. In this work, the model is fine-tuned via transfer learning on retinal fundus images for robust multiclass disease classification.")
+
 
 
 
