@@ -52,6 +52,7 @@ with col4:
 
 patient_name = st.text_input("Enter Patient Name: ")
 age = st.text_input("Enter Patient Age: ")
+gender = st.text_input("Enter Patient Gender (Gay and Lesbians are not allowed): ")
 
 uploaded_file = st.file_uploader("Upload Fundus Retinal Image", type=["jpg", "png", "jpeg"])
 
@@ -181,7 +182,7 @@ from zoneinfo import ZoneInfo
 
 report_date = datetime.now(ZoneInfo("Asia/Dhaka")).strftime("%d %B %Y, %I:%M %p")
 
-def generate_pdf(predicted_class, confidence, image_path, patient_name, age, report_date):
+def generate_pdf(predicted_class, confidence, image_path, patient_name, age, report_date, gender):
 
     suggestion = get_suggestion(predicted_class)
 
@@ -199,6 +200,7 @@ def generate_pdf(predicted_class, confidence, image_path, patient_name, age, rep
 
     elements.append(Paragraph(f"<b>Patient Name:</b> {patient_name}", styles["Normal"]))
     elements.append(Paragraph(f"<b>Patient Age:</b> {age}", styles["Normal"]))
+    elements.append(Paragraph(f"<b>Patient Gender:</b> {gender}", styles["Normal"]))
     elements.append(Paragraph(f"<b>Date:</b> {report_date}", styles["Normal"]))
     elements.append(Spacer(1, 0.3 * inch))
 
@@ -236,7 +238,8 @@ if "predicted_class" in st.session_state:
             temp_file.name,
             patient_name,
             age,
-            report_date
+            report_date,
+            gender
         )
 
         st.session_state["pdf_file"] = pdf_file
@@ -248,6 +251,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
