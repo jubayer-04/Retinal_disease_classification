@@ -179,12 +179,12 @@ import tempfile
 
 report_date = datetime.now().strftime("%d %B %Y, %I:%M %p")
 
-def generate_pdf(predicted_class, confidence, image_path, patient_name, age):
+def generate_pdf(predicted_class, confidence, image_path, patient_name, age, report_date):
 
     suggestion = get_suggestion(predicted_class)
 
     # Generate current date properly
-    report_date = datetime.now().strftime("%d %B %Y")
+    #report_date = datetime.now().strftime("%d %B %Y")
 
     pdf_path = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf").name
     doc = SimpleDocTemplate(pdf_path)
@@ -233,7 +233,8 @@ if "predicted_class" in st.session_state:
             confidence * 100,
             temp_file.name,
             patient_name,
-            age
+            age,
+            report_date
         )
 
         st.session_state["pdf_file"] = pdf_file
@@ -245,6 +246,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
