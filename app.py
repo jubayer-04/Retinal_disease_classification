@@ -39,6 +39,7 @@ if uploaded_file:
     left, center, right = st.columns([1,2,1])
     with center:
         st.image(image, caption="Uploaded Image")
+         predict_clicked = st.button("Predict")
         
     
     img_array = np.array(image)
@@ -46,8 +47,8 @@ if uploaded_file:
     img_array = np.expand_dims(img_array, axis=0)
     left, center, right = st.columns([1,2,1])
 
-    with center:
-        predict_clicked = st.button("Predict")
+  
+       
    
     if predict_clicked:
     # your prediction code here
@@ -98,6 +99,7 @@ st.text(report_text)
 
 st.subheader("Model Description")
 st.text("We have worked with EfficientNetV2B3 model which is a convolutional neural network architecture that employs fused MBConv blocks and compound scaling to optimize accuracy–efficiency trade-offs while reducing training time. It leverages progressive learning and depth–width–resolution scaling to improve feature representation with fewer parameters. In this work, the model is fine-tuned via transfer learning on retinal fundus images for robust multiclass disease classification.")
+
 
 
 
