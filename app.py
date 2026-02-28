@@ -228,6 +228,7 @@ def generate_pdf(predicted_class, confidence, image_path, patient_name, age, rep
     elements.append(Spacer(1, 0.3 * inch))
 
     elements.append(RLImage(image_path, width=3 * inch, height=3 * inch))
+    elements.append(Spacer(1, 0.2 * inch))
     elements.append(Paragraph(
     f"<i>Figure 1: Predicted - {predicted_class}</i>",
     caption_style
@@ -269,6 +270,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
