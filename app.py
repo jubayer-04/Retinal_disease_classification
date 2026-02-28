@@ -230,9 +230,10 @@ def generate_pdf(predicted_class, confidence, image_path, patient_name, age, rep
     elements.append(RLImage(image_path, width=3 * inch, height=3 * inch))
     elements.append(Spacer(1, 0.2 * inch))
     elements.append(Paragraph(
-    f"<i>Figure 1: Predicted - {predicted_class}</i>",
+    f"<i>Figure 1: {predicted_class}</i>",
     caption_style
 ))
+    elements.append(Paragraph("<b>Disclaimer: This result is AI-assisted and not a medical diagnosis. Please consult a qualified doctor for confirmation. Remember Ai can make mistakes... So, Don't trust it blindly....</b>", styles["Heading3"]))
 
     doc.build(elements)
 
@@ -270,6 +271,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
