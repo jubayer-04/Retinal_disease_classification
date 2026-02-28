@@ -23,7 +23,7 @@ model = load_model()
 st.title("Retinal Disease Detection")
 
 uploaded_file = st.file_uploader("Upload Retinal Image", type=["jpg", "png", "jpeg"])
-st.write("All classes are: ", classe_names)
+st.write("All classes are: ", class_names)
 
 if uploaded_file:
     image = Image.open(uploaded_file).resize((224, 224))
@@ -54,6 +54,7 @@ if uploaded_file:
         plt.ylim(0, 100)
     
         st.pyplot(fig)
+
 
 
 
