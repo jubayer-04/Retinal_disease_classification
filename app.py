@@ -65,12 +65,12 @@ if uploaded_file:
         st.pyplot(fig)
 
 report_text = f"""
-{'Class':<28}{'Precision':<10}{'Recall':<10}{'F1-Score':<10}{'Support':<10}
+{'Class':<40}{'Precision':<10}{'Recall':<10}{'F1-Score':<10}{'Support':<10}
 {'-'*70}
-{'cataract':<28}{0.98:<10.2f}{0.99:<10.2f}{0.98:<10.2f}{1038:<10}
-{'diabetic_retinopathy':<10}{1.00:<10.2f}{1.00:<10.2f}{1.00:<10.2f}{1098:<10}
-{'glaucoma':<28}{0.96:<10.2f}{0.95:<10.2f}{0.96:<10.2f}{1007:<10}
-{'normal':<28}{0.96:<10.2f}{0.96:<10.2f}{0.96:<10.2f}{1074:<10}
+{'cataract':<40}{0.98:<10.2f}{0.99:<10.2f}{0.98:<10.2f}{1038:<10}
+{'diabetic_retinopathy':<28}{1.00:<10.2f}{1.00:<10.2f}{1.00:<10.2f}{1098:<10}
+{'glaucoma':<40}{0.96:<10.2f}{0.95:<10.2f}{0.96:<10.2f}{1007:<10}
+{'normal':<40}{0.96:<10.2f}{0.96:<10.2f}{0.96:<10.2f}{1074:<10}
 """
 
 
@@ -79,6 +79,7 @@ report_text = f"""
 with col2:
     st.subheader("Model Performance (Test Set)")
     st.text(report_text)
+
 
 
 
