@@ -8,15 +8,7 @@ import matplotlib.pyplot as plt
 
 
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
-report = """
-              precision  recall  f1-score  support
-cataract        0.98     0.99     0.98     1038
-diabetic_ret    1.00     1.00     1.00     1098
-glaucoma        0.96     0.95     0.96     1007
-normal          0.96     0.96     0.96     1074
 
-accuracy                            0.98    4217
-"""
 
 col1, col2 = st.columns([1,1])
 
@@ -72,10 +64,19 @@ with col1:
         
             st.pyplot(fig)
 
+report = """
+              precision  recall  f1-score  support
+cataract        0.98     0.99     0.98     1038
+diabetic_ret    1.00     1.00     1.00     1098
+glaucoma        0.96     0.95     0.96     1007
+normal          0.96     0.96     0.96     1074
 
+accuracy                            0.98    4217
+"""
 with col2:
     st.subheader("Model Performance (Test Set)")
     st.text(report)
+
 
 
 
