@@ -78,13 +78,16 @@ report_text = f"""
 
 
 
+
+
+st.subheader("Model Performance")
+st.text(report_text)
+
 st.text("Accuracy: 98.5%")
 st.text("Precision: 0.9856")
 st.text("Recall: 0.985")
 st.text("F1 Score: 0.985")
 
-st.subheader("Model Performance (Test Set)")
-st.text(report_text)
 
 
 
