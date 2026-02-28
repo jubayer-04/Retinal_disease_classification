@@ -52,7 +52,10 @@ with col4:
 
 patient_name = st.text_input("Enter Patient Name: ")
 age = st.text_input("Enter Patient Age: ")
-gender = st.text_input("Enter Patient Gender (Gay and Lesbians are not allowed): ")
+gender = st.radio(
+    "Select Gender:",
+    ["Male", "Female"]
+)
 
 uploaded_file = st.file_uploader("Upload Fundus Retinal Image", type=["jpg", "png", "jpeg"])
 
@@ -271,6 +274,7 @@ if "predicted_class" in st.session_state:
             file_name="retinal_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
