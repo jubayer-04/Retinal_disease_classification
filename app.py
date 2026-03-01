@@ -105,6 +105,65 @@ div[data-baseweb="input"]:focus-within > div {
 </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
+
+/* ===== Result Card ===== */
+.result-card {
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.35);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    margin-top: 20px;
+}
+
+/* Title */
+.result-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Predicted Class */
+.class-glaucoma {
+    color: #c0392b;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.class-normal {
+    color: #27ae60;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/* Confidence Badge */
+.confidence {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 30px;
+    background: rgba(0,0,0,0.08);
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+/* Suggestion box */
+.suggestion-box {
+    margin-top: 18px;
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.25);
+    border-left: 5px solid #e67e22;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
 
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
@@ -393,4 +452,5 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
