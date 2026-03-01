@@ -47,6 +47,22 @@ section[data-testid="stSidebar"] > div {
 </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
+
+div[data-baseweb="input"] > div {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 12px;
+}
+
+input {
+    color: white !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
@@ -336,6 +352,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
