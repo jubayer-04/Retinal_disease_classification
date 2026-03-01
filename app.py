@@ -89,11 +89,11 @@ with col4:
     st.image(Image.open("samples/normal.jpg"), caption="Normal", width=150)
 
 
-patient_name = st.text_input(<b>"Enter Patient Name: "</b>)
-age = st.text_input("Enter Patient Age: ")
+patient_name = st.text_input("**Enter Patient Name: **")
+age = st.text_input("**Enter Patient Age: **")
 gender = st.radio(
-    "Select Gender:",
-    ["Male", "Female"]
+    "**Select Gender:**",
+    ["**Male**", "**Female**"]
 )
 
 uploaded_file = st.file_uploader("Upload Fundus Retinal Image", type=["jpg", "png", "jpeg"])
@@ -310,6 +310,7 @@ if "predicted_class" in st.session_state:
             file_name=f"{patient_name}_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
