@@ -316,9 +316,6 @@ if "predicted_class" in st.session_state:
 from datetime import datetime
 current_year = datetime.now().year
 
-from datetime import datetime
-current_year = datetime.now().year
-
 st.markdown(f"""
 <div style="text-align:center; padding:15px; background-color:#e9ecef;">
     <strong>Retinal Disease Classification System</strong><br>
@@ -338,7 +335,7 @@ st.markdown(f"""
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
 
-#st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
