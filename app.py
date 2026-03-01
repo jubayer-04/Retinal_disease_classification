@@ -314,7 +314,6 @@ if "predicted_class" in st.session_state:
 
 
 from datetime import datetime
-
 current_year = datetime.now().year
 
 st.markdown(f"""
@@ -325,23 +324,36 @@ st.markdown(f"""
     bottom: 0;
     width: 100%;
     background-color: #f8f9fa;
-    color: #333;
+    color: #333333;
     text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    border-top: 1px solid #ddd;
+    padding: 12px 10px;
+    font-size: 13px;
+    border-top: 1px solid #e0e0e0;
+    line-height: 1.6;
+}}
+
+.footer a {{
+    color: #0066cc;
+    text-decoration: none;
+}}
+
+.footer a:hover {{
+    text-decoration: underline;
 }}
 </style>
 
 <div class="footer">
-    Retinal Disease Classification System | Developed by Jubayer Hossain & Nazia Sultana Marjan| © {current_year}
-    Department of Computer Science and Engineering 
-    Daffodil International University
-    contact: jubayerhossain.cse@gmail.com | marjan22205101802@diu.edu.bd
-    
-    
+    <strong>Retinal Disease Classification System</strong><br>
+    Department of Computer Science & Engineering<br>
+    Your University Name<br>
+    Contact: <a href="mailto:your_email@example.com">your_email@example.com</a><br>
+    © {current_year} Jubayer Hossain
 </div>
 """, unsafe_allow_html=True)
+
+# Add spacing to prevent overlap
+st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
