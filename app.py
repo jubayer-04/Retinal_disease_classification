@@ -11,6 +11,8 @@ st.markdown(f"""
 <style>
 
 /* MAIN BACKGROUND */
+st.markdown("""
+<style>
 .stApp {
     background: linear-gradient(
         135deg,
@@ -20,6 +22,8 @@ st.markdown(f"""
     );
     background-attachment: fixed;
 }
+</style>
+""", unsafe_allow_html=True)
 
 /* SIDEBAR GLASS EFFECT */
 section[data-testid="stSidebar"] {
@@ -334,6 +338,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
