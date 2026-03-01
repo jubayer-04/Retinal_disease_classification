@@ -25,9 +25,8 @@ st.markdown("""
 section[data-testid="stSidebar"] {
     background: linear-gradient(
         135deg,
-        rgba(255, 200, 150, 0.35),
-        rgba(255, 170, 100, 0.30),
-        rgba(255, 140, 60, 0.25)
+        rgba(255, 180, 120, 0.55),
+        rgba(255, 150, 80, 0.50)
     );
 }
 
@@ -303,6 +302,7 @@ if "predicted_class" in st.session_state:
             file_name=f"{patient_name}_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
