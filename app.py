@@ -369,7 +369,7 @@ def generate_pdf(predicted_class, confidence, image_path, patient_name, age, rep
 
     styles = getSampleStyleSheet()
 
-    elements.append(Paragraph("👁 RetinaDetect AI", styles["Heading1"])
+    elements.append(Paragraph("👁 RetinaDetect AI", styles["Heading1"]))
     elements.append(Spacer(1, 0.2 * inch))
     elements.append(Paragraph("AI-Based Retinal Disease Detection System", styles["Heading2"]))
     elements.append(Spacer(1, 0.3 * inch))
@@ -464,6 +464,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
