@@ -73,7 +73,7 @@ with st.sidebar.expander("Model Details"):
     
 st.write("All classes are: ", class_names)
 
-st.markdown("Sample Fundus Retinal Images")
+st.markdown("Sample  Retinal Images")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -334,6 +334,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
