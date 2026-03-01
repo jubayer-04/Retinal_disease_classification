@@ -191,6 +191,18 @@ with st.sidebar.expander("Model Details"):
     st.write("Total Parameters:", f"{model.count_params():,}")
     st.write("Classes:", class_names)
     
+with st.sidebar:
+    with st.expander("About", expanded=True):
+
+        st.markdown("**Department:** Computer Science & Engineering")
+        st.markdown("**University:** Daffodil International University")
+
+        st.markdown("---")
+
+        st.markdown("[📧 Email](mailto:jubayerhossain.cse@gmail.com)")
+        st.markdown("[💼 LinkedIn](https://linkedin.com/in/yourprofile)")
+        st.markdown("[💻 GitHub](https://github.com/yourusername)")
+    
 st.write("All classes are: ", class_names)
 
 st.markdown("Sample Fundus Retinal Images")
@@ -464,6 +476,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
