@@ -14,7 +14,7 @@ st.markdown("""
 <style>
 .stApp {
     background: linear-gradient(
-        135deg,
+        135,
         rgba(255, 220, 180, 0.25),
         rgba(255, 190, 140, 0.20),
         rgba(255, 160, 100, 0.15)
@@ -338,6 +338,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
