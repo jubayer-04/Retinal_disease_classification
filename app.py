@@ -334,10 +334,13 @@ st.markdown(f"""
 </style>
 
 <div class="footer">
-    Retinal Disease Classification System | Developed by Jubayer Hossain | © {current_year}
+    Retinal Disease Classification System | Developed by Jubayer Hossain & Nazia Sultana Marjan| © {current_year}
+    Department of Computer Science and Engineering, Daffodil International University
+    
     
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
