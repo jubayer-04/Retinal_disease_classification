@@ -29,6 +29,12 @@ section[data-testid="stSidebar"] {
     -webkit-backdrop-filter: blur(12px);
     border-right: 1px solid rgba(255,255,255,0.3);
 }
+/* Actual typing text */
+div[data-baseweb="input"] input {
+    color: #222222 !important;   /* Dark text */
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
 
 /* Make sidebar content transparent */
 section[data-testid="stSidebar"] > div {
@@ -352,6 +358,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
