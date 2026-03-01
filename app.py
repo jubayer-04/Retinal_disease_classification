@@ -422,20 +422,21 @@ if "predicted_class" in st.session_state:
 
         st.session_state["pdf_file"] = pdf_file
 
-    with open(st.session_state["pdf_file"], "rb") as f:
-        is_valid = patient_name.strip() != "" and age.strip() != ""
+    is_valid = patient_name.strip() != "" and age.strip() != ""
 
-        if not is_valid:
-            st.warning("Name and age are required to download the report.")
-        
-        if is_valid and "pdf_file" in st.session_state:
-            with open(st.session_state["pdf_file"], "rb") as f:
-                st.download_button(
-                    label="Download Report as PDF",
-                    data=f,
-                    file_name=f"{patient_name}_report.pdf",
-                    mime="application/pdf"
-                )
+    if not is_valid:
+        st.warning("Name and age are required to download the report.")
+    
+    elif "pdf_file" in st.session_state:
+        with open(st.session_state["pdf_file"], "rb") as f:
+            st.download_button(
+                label="Download Report as PDF",
+                data=f,
+                file_name=f"{patient_name}_report.pdf",
+                mime="application/pdf"
+            )
+    else:
+        st.warning("Generate the report first.")
 
 
 from datetime import datetime
@@ -459,6 +460,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
