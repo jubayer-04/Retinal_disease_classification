@@ -5,7 +5,13 @@ from PIL import Image
 from huggingface_hub import hf_hub_download
 from tensorflow.keras.applications.efficientnet_v2 import preprocess_input
 import matplotlib.pyplot as plt
-
+st.markdown("""
+    <style>
+    .stApp {
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
@@ -271,6 +277,7 @@ if "predicted_class" in st.session_state:
             file_name=f"{patient_name}_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
