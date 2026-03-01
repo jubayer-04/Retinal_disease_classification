@@ -63,7 +63,7 @@ def load_model():
 model = load_model()
 
 
-st.title("Retinal Disease Classification(EfficientNetV2B3)")
+st.title("Retinal Disease Classification (EfficientNetV2B3)")
 with st.sidebar.expander("Model Details"):
     st.markdown("### **EfficientNetV2B3**")
     st.write("Input Shape:", model.input_shape)
@@ -311,6 +311,7 @@ if "predicted_class" in st.session_state:
             file_name=f"{patient_name}_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
