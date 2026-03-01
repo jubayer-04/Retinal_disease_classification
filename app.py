@@ -181,7 +181,8 @@ def load_model():
 model = load_model()
 
 
-st.title("Retinal Disease Classification (EfficientNetV2B3)")
+st.title("👁 RetinaDetect AI
+AI-Based Retinal Disease Detection System (EfficientNetV2B3)")
 with st.sidebar.expander("Model Details"):
     st.markdown("### **EfficientNetV2B3**")
     st.write("Input Shape:", model.input_shape)
@@ -460,6 +461,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
