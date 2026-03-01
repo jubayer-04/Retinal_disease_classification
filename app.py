@@ -196,6 +196,50 @@ div.stButton > button:active {
 """, unsafe_allow_html=True)
 
 
+st.markdown("""
+<style>
+
+/* Main uploader container */
+section[data-testid="stFileUploader"] {
+    background: linear-gradient(135deg, rgba(255,153,102,0.25), rgba(255,94,98,0.25));
+    border: 2px dashed rgba(255,94,98,0.6);
+    border-radius: 18px;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(8px);
+}
+
+/* Hover animation */
+section[data-testid="stFileUploader"]:hover {
+    transform: scale(1.02);
+    border-color: #ff5e62;
+    box-shadow: 0 8px 25px rgba(255,94,98,0.3);
+}
+
+/* Browse button styling */
+section[data-testid="stFileUploader"] button {
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    color: white;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+section[data-testid="stFileUploader"] button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(255,94,98,0.4);
+}
+
+/* File name after upload */
+section[data-testid="stFileUploader"] span {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
 
@@ -540,6 +584,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
