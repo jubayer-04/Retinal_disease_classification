@@ -66,15 +66,40 @@ section[data-testid="stSidebar"] > div {
 st.markdown("""
 <style>
 
-div[data-baseweb="input"] > div {
-    background: rgba(255, 255, 255, 0.15) !important;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border-radius: 12px;
+/* Remove default white background */
+div[data-baseweb="input"] {
+    background: transparent !important;
 }
 
-input {
-    color: white !important;
+/* Glass container */
+div[data-baseweb="input"] > div {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Actual typing area */
+div[data-baseweb="input"] input {
+    background: transparent !important;
+    color: #222 !important;
+    font-size: 16px !important;
+    font-weight: 500;
+}
+
+/* Placeholder */
+div[data-baseweb="input"] input::placeholder {
+    color: rgba(50, 50, 50, 0.6) !important;
+}
+
+/* Focus effect */
+div[data-baseweb="input"]:focus-within > div {
+    border: 1px solid rgba(255, 140, 100, 0.9) !important;
+    box-shadow: 0 0 12px rgba(255, 140, 100, 0.4);
+    transform: scale(1.02);
 }
 
 </style>
@@ -368,3 +393,4 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
