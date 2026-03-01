@@ -6,7 +6,48 @@ from huggingface_hub import hf_hub_download
 from tensorflow.keras.applications.efficientnet_v2 import preprocess_input
 import matplotlib.pyplot as plt
 
+st.markdown(f"""
+<style>
 
+/* MAIN BACKGROUND */
+st.markdown("""
+<style>
+.stApp {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 220, 180, 0.25),
+        rgba(255, 190, 140, 0.20),
+        rgba(255, 160, 100, 0.15)
+    );
+    background-attachment: fixed;
+}
+</style>
+""", unsafe_allow_html=True)
+
+/* SIDEBAR GLASS EFFECT */
+section[data-testid="stSidebar"] {
+    background: rgba(255, 210, 170, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Make sidebar content transparent */
+section[data-testid="stSidebar"] > div {
+    background: transparent;
+}
+
+/* Optional: Glass Card Effect for Main Blocks */
+.block-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 
 
@@ -297,6 +338,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
