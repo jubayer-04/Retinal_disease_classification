@@ -10,7 +10,12 @@ import matplotlib.pyplot as plt
 st.markdown("""
     <style>
     .stApp {
-        background: linear-gradient(135deg, #FFE5B4, #FFD8A8, #FFC078);
+        background: linear-gradient(
+            135deg,
+            rgba(255, 200, 150, 0.35),
+            rgba(255, 170, 100, 0.30),
+            rgba(255, 140, 60, 0.25)
+        );
         background-attachment: fixed;
     }
     </style>
@@ -280,6 +285,7 @@ if "predicted_class" in st.session_state:
             file_name=f"{patient_name}_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
