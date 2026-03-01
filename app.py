@@ -7,7 +7,7 @@ from tensorflow.keras.applications.efficientnet_v2 import preprocess_input
 import matplotlib.pyplot as plt
 
 
-st.markdown("""
+st.markdown(f"""
 <style>
 
 /* MAIN BACKGROUND */
@@ -335,6 +335,7 @@ st.markdown("""
 
 # Add spacing to prevent overlap
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
