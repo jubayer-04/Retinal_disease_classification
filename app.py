@@ -164,6 +164,37 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
+
+/* Target only primary button */
+div.stButton > button {
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 12px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 6px 18px rgba(255, 94, 98, 0.4);
+}
+
+/* Hover effect */
+div.stButton > button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 10px 25px rgba(255, 94, 98, 0.6);
+    background: linear-gradient(135deg, #ff5e62, #ff9966);
+}
+
+/* Click effect */
+div.stButton > button:active {
+    transform: scale(0.97);
+}
+
+</style>
+""", unsafe_allow_html=True)
+
 
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
@@ -509,6 +540,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
