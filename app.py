@@ -347,13 +347,14 @@ st.markdown(f"""
     <strong>Developed by Jubayer Hossain & Nazia Sultana Marjan</strong><br>
     Department of Computer Science & Engineering<br>
     Daffodil International University<br>
-    Contact: <a href="mailto:your_email@example.com">jubayerhossain.cse@gmail.com</a><br>
+    Contact: <a href="mailto:jubayerhossain.cse@gmail.com">jubayerhossain.cse@gmail.com</a><br>
     © {current_year} Jubayer & Nazia
 </div>
 """, unsafe_allow_html=True)
 
 # Add spacing to prevent overlap
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
