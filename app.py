@@ -8,17 +8,35 @@ import matplotlib.pyplot as plt
 
 
 st.markdown("""
-    <style>
-    .stApp {
-        background: linear-gradient(
-            135deg,
-            rgba(255, 200, 150, 0.35),
-            rgba(255, 170, 100, 0.30),
-            rgba(255, 140, 60, 0.25)
-        );
-        background-attachment: fixed;
-    }
-    </style>
+<style>
+
+/* Main App Background */
+.stApp {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 200, 150, 0.35),
+        rgba(255, 170, 100, 0.30),
+        rgba(255, 140, 60, 0.25)
+    );
+    background-attachment: fixed;
+}
+
+/* Sidebar Background */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 200, 150, 0.35),
+        rgba(255, 170, 100, 0.30),
+        rgba(255, 140, 60, 0.25)
+    );
+}
+
+/* Optional: Remove dark default overlay */
+section[data-testid="stSidebar"] > div {
+    background: transparent;
+}
+
+</style>
 """, unsafe_allow_html=True)
 
 
@@ -285,6 +303,7 @@ if "predicted_class" in st.session_state:
             file_name=f"{patient_name}_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
