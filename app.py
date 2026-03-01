@@ -212,7 +212,7 @@ patient_name = st.text_input("", placeholder = "Enter patient name here....")
 age = st.text_input("", placeholder = "Enter patient age here....")
 gender = st.radio(
     "**Select Gender:**",
-    ["**Male**", "**Female**"]
+    ["Male", "Female"]
 )
 
 uploaded_file = st.file_uploader("Upload Fundus Retinal Image", type=["jpg", "png", "jpeg"])
@@ -452,5 +452,6 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
