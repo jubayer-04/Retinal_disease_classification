@@ -313,6 +313,31 @@ if "predicted_class" in st.session_state:
         )
 
 
+from datetime import datetime
+
+current_year = datetime.now().year
+
+st.markdown(f"""
+<style>
+.footer {{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+}}
+</style>
+
+<div class="footer">
+    Retinal Disease Classification System | Developed by Jubayer Hossain | © {current_year}
+    
+</div>
+""", unsafe_allow_html=True)
 
 
 
