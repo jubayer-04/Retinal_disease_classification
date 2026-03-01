@@ -335,11 +335,14 @@ st.markdown(f"""
 
 <div class="footer">
     Retinal Disease Classification System | Developed by Jubayer Hossain & Nazia Sultana Marjan| © {current_year}
-    Department of Computer Science and Engineering, Daffodil International University
+    Department of Computer Science and Engineering 
+    Daffodil International University
+    contact: jubayerhossain.cse@gmail.com | marjan22205101802@diu.edu.bd
     
     
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
