@@ -423,8 +423,8 @@ if "predicted_class" in st.session_state:
         st.session_state["pdf_file"] = pdf_file
 
     with open(st.session_state["pdf_file"], "rb") as f:
-        if patient_name == "" | age == "":
-            st.text("Enter the name and age first")
+        iif patient_name.strip() == "" or age.strip() == "":
+            st.error("Enter the name and age first")
         else:
             st.download_button(
                 label="Download Report as PDF",
@@ -455,6 +455,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
