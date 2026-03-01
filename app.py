@@ -29,6 +29,16 @@ section[data-testid="stSidebar"] {
     -webkit-backdrop-filter: blur(12px);
     border-right: 1px solid rgba(255,255,255,0.3);
 }
+/* Outer container */
+div[data-baseweb="input"] > div {
+    background: rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    transition: all 0.3s ease;
+}
 /* Actual typing text */
 div[data-baseweb="input"] input {
     color: #222222 !important;   /* Dark text */
@@ -358,6 +368,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
