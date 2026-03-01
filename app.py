@@ -90,7 +90,7 @@ with col4:
 
 #st.markdown("**Enter Patient Name:**")
 patient_name = st.text_input("", placeholder = "Enter patient name here....")
-age = st.text_input("**Enter Patient Age: **")
+age = st.text_input("", placeholder = "Enter patient age here....")
 gender = st.radio(
     "**Select Gender:**",
     ["**Male**", "**Female**"]
@@ -310,6 +310,7 @@ if "predicted_class" in st.session_state:
             file_name=f"{patient_name}_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
