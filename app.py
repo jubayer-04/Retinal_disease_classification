@@ -196,16 +196,16 @@ with st.sidebar:
         st.markdown("*Jubayer Hossian*")
         st.markdown(" Computer Science & Engineering")
         st.markdown("Daffodil International University")
-        st.markdown("[📧 Email](mailto:jubayerhossain.cse@gmail.com)")
-        st.markdown("[💼 LinkedIn](https://www.linkedin.com/in/jubayer-hossain-628b92292/)")
-        st.markdown("[💻 GitHub](https://github.com/jubayer-04)")
+        st.markdown("[📧](mailto:jubayerhossain.cse@gmail.com)")
+        st.markdown("[💼](https://www.linkedin.com/in/jubayer-hossain-628b92292/)")
+        st.markdown("[💻](https://github.com/jubayer-04)")
         st.markdown("---")
         st.markdown("*Nazia Sultana Marjan*")
         st.markdown(" Computer Science & Engineering")
         st.markdown("Daffodil International University")
-        st.markdown("[📧 Gmail](mailto:marjan22205101802@diu.edu.bd)")
-        st.markdown("[💼 LinkedIn](https://www.linkedin.com/in/naziasultana1436/)")
-        st.markdown("[💻 GitHub](https://github.com/marjan18)")
+        st.markdown("[📧](mailto:marjan22205101802@diu.edu.bd)")
+        st.markdown("[💼](https://www.linkedin.com/in/naziasultana1436/)")
+        st.markdown("[💻](https://github.com/marjan18)")
     
 st.write("All classes are: ", class_names)
 
@@ -480,6 +480,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
