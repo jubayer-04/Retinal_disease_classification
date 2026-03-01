@@ -385,6 +385,26 @@ caption_style = ParagraphStyle(
 from zoneinfo import ZoneInfo
 
 report_date = datetime.now(ZoneInfo("Asia/Dhaka")).strftime("%d %B %Y, %I:%M %p")
+from reportlab.lib.units import inch
+from reportlab.lib import colors
+
+def add_watermark(canvas, doc):
+    canvas.saveState()
+
+    watermark_text = "@RetinaDetect AI"
+
+    # Font styling
+    canvas.setFont("Helvetica-Oblique", 9)
+    canvas.setFillColor(colors.grey)
+
+    # Bottom-right corner positioning
+    page_width, page_height = doc.pagesize
+    x = page_width - 0.5 * inch
+    y = 0.4 * inch
+
+    canvas.drawRightString(x, y, watermark_text)
+
+    canvas.restoreState()
 
 def generate_pdf(predicted_class, confidence, image_path, patient_name, age, report_date, gender):
 
@@ -426,8 +446,12 @@ def generate_pdf(predicted_class, confidence, image_path, patient_name, age, rep
     caption_style
 ))
     elements.append(Paragraph("Disclaimer: This result is AI-assisted and not a medical diagnosis. Please consult a qualified doctor for confirmation. Remember Ai can make mistakes... So, Don't trust it blindly....", styles["Heading3"]))
-
-    doc.build(elements)
+    
+    doc.build(
+    elements,
+    onFirstPage=add_watermark,
+    onLaterPages=add_watermark
+)
 
     return pdf_path
 # ------------------ After Prediction ------------------
@@ -478,13 +502,14 @@ current_year = datetime.now().year
 
 st.markdown(f"""
 <div style="text-align:center; padding:15px; background-color:#e9ecef;">
-    <strong>Retinal Disease Classification System</strong><br>
+    <strong>👁 RetinaDetect AI</strong><br>
     Developed by Jubayer Hossain & Nazia Sultana Marjan<br>
     © {current_year} Jubayer & Nazia
 </div>
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
