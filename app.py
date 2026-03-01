@@ -316,16 +316,16 @@ if "predicted_class" in st.session_state:
 from datetime import datetime
 current_year = datetime.now().year
 
-st.markdown("""
+st.markdown(f"""
 <div style="text-align:center; padding:15px; background-color:#e9ecef;">
     <strong>Retinal Disease Classification System</strong><br>
     Developed by Jubayer Hossain & Nazia Sultana Marjan<br>
     Department of Computer Science & Engineering<br>
     Daffodil International University<br>
-    Contact: 
+    Contact:
     <a href="mailto:jubayerhossain.cse@gmail.com">
         jubayerhossain.cse@gmail.com
-    </a> | 
+    </a> |
     <a href="mailto:marjan22205101802@diu.edu.bd">
         marjan22205101802@diu.edu.bd
     </a><br>
@@ -333,8 +333,8 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Add spacing to prevent overlap
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
