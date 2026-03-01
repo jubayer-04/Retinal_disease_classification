@@ -5,24 +5,15 @@ from PIL import Image
 from huggingface_hub import hf_hub_download
 from tensorflow.keras.applications.efficientnet_v2 import preprocess_input
 import matplotlib.pyplot as plt
+
+
 st.markdown("""
-<style>
-.stApp {
-    background-color: #F4F9FF;
-}
-
-h1 {
-    color: #1E3A8A;
-    text-align: center;
-}
-
-div.stButton > button {
-    background-color: #1E3A8A;
-    color: white;
-    border-radius: 10px;
-    height: 3em;
-}
-</style>
+    <style>
+    .stApp {
+        background: linear-gradient(135deg, #FFE5B4, #FFD8A8, #FFC078);
+        background-attachment: fixed;
+    }
+    </style>
 """, unsafe_allow_html=True)
 
 
@@ -289,6 +280,7 @@ if "predicted_class" in st.session_state:
             file_name=f"{patient_name}_report.pdf",
             mime="application/pdf"
         )
+
 
 
 
