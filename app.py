@@ -259,16 +259,18 @@ model = load_model()
 st.title("👁 RetinaDetect AI")
 st.header("AI-Based Retinal Disease Detection System")
 st.subheader("EfficientNetV2B3")
+
 # Sidebar - Eye Care Tips
 st.sidebar.markdown("## 👁️ Eye Care Tips")
 
 st.sidebar.markdown("""
-1. Wear UV-protective sunglasses outdoors.  
-2. Maintain proper lighting and avoid screen glare.  
-3. Blink frequently and stay hydrated to prevent dry eyes.  
-4. Eat vitamin-rich foods that support retinal health.  
-5. Get regular comprehensive eye checkups for early disease detection.
+> Wear UV-protective sunglasses outdoors.  
+> Maintain proper lighting and avoid screen glare.  
+> Blink frequently and stay hydrated to prevent dry eyes.  
+> Eat vitamin-rich foods that support retinal health.  
+> Get regular comprehensive eye checkups for early disease detection.
 """)
+
 with st.sidebar.expander("Model Details"):
     st.markdown("### **EfficientNetV2B3**")
     st.write("Input Shape:", model.input_shape)
@@ -277,7 +279,7 @@ with st.sidebar.expander("Model Details"):
     st.write("Classes:", class_names)
     
 with st.sidebar:
-    with st.expander("About", expanded=True):
+    with st.expander("About", expanded=False):
         st.markdown("*Jubayer Hossian*")
         st.markdown(" Computer Science & Engineering")
         st.markdown("Daffodil International University")
@@ -594,6 +596,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
