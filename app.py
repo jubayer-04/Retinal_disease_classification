@@ -264,11 +264,11 @@ st.subheader("EfficientNetV2B3")
 st.sidebar.markdown("## 👁️ Eye Care Tips")
 
 st.sidebar.markdown("""
-> Wear UV-protective sunglasses outdoors.  
-> Maintain proper lighting and avoid screen glare.  
-> Blink frequently and stay hydrated to prevent dry eyes.  
-> Eat vitamin-rich foods that support retinal health.  
-> Get regular comprehensive eye checkups for early disease detection.
+- Wear UV-protective sunglasses outdoors.  
+- Maintain proper lighting and avoid screen glare.  
+- Blink frequently and stay hydrated to prevent dry eyes.  
+- Eat vitamin-rich foods that support retinal health.  
+- Get regular comprehensive eye checkups for early disease detection.
 """)
 
 with st.sidebar.expander("Model Details"):
@@ -596,6 +596,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
