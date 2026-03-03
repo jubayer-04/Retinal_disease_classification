@@ -248,7 +248,7 @@ class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 def load_model():
     model_path = hf_hub_download(
         repo_id="jubayer009/retinal_efficientnetv2b3.keras",
-        filename="retina_efficientnetv2b3(2).keras"
+        filename="retina_efficientnetv2b3(1).keras"
     )
     model = tf.keras.models.load_model(model_path)
     return model
@@ -596,6 +596,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
