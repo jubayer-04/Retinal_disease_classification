@@ -248,7 +248,7 @@ class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 def load_model():
     model_path = hf_hub_download(
         repo_id="jubayer009/retinal_efficientnetv2b3.keras",
-        filename="retina_efficientnetv2b3(2).keras"
+        filename="efficientnetv2b3.keras"
     )
     model = tf.keras.models.load_model(model_path)
     return model
@@ -339,7 +339,7 @@ uploaded_file = st.file_uploader("Upload Fundus Retinal Image", type=["jpg", "pn
 
 
 if uploaded_file:
-    image = Image.open(uploaded_file).resize((224, 224))
+    image = Image.open(uploaded_file).resize((256, 256))
     st.session_state["uploaded_image"] = image
     left, center, right = st.columns([1,2,1])
 
@@ -596,6 +596,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
