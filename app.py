@@ -419,21 +419,21 @@ if uploaded_file:
 report_text = f"""
 {'Class':<40}{'Precision':<10}{"|  "}{'Recall':<10}{"|  "}{'F1-Score':<10}{"|  "}{'Support':<10}
 {'-'*70}
-{'cataract':<40}{0.94 :<10.2f}{"|  "}{0.96:<10.2f}{"|  "}{0.95:<10.2f}{"|  "}{100:<10}
+{'cataract':<40}{0.85 :<10.2f}{"|  "}{0.97:<10.2f}{"|  "}{0.91:<10.2f}{"|  "}{100:<10}
 {'-'*70}
-{'diabetic_retinopathy':<25}{0.98:<10.2f}{"|  "}{0.97:<10.2f}{"|  "}{0.97:<10.2f}{"|  "}{100:<10}
+{'diabetic_retinopathy':<25}{0.97:<10.2f}{"|  "}{0.98:<10.2f}{"|  "}{0.98:<10.2f}{"|  "}{100:<10}
 {'-'*70}
-{'glaucoma':<40}{0.94:<10.2f}{"|  "}{0.78:<10.2f}{"|  "}{0.85:<10.2f}{"|  "}{100:<10}
+{'glaucoma':<40}{0.96:<10.2f}{"|  "}{0.68:<10.2f}{"|  "}{0.80:<10.2f}{"|  "}{100:<10}
 {'-'*70}
-{'normal':<40}{0.82:<10.2f}{"|  "}{0.95:<10.2f}{"|  "}{0.88:<10.2f}{"|  "}{100:<10}
+{'normal':<40}{0.82:<10.2f}{"|  "}{0.94:<10.2f}{"|  "}{0.88:<10.2f}{"|  "}{100:<10}
 """
 
 
 st.subheader("Model Performance")
-st.text("Overall Accuracy: 92%")
-st.text("Overall Precision: 0.92")
-st.text("Overall Recall: 0.915")
-st.text("Overall F1 Score: 0.9144")
+st.text("Overall Accuracy: 90%")
+st.text("Overall Precision: 0.90")
+st.text("Overall Recall: 0.89")
+st.text("Overall F1 Score: 0.89")
 st.text(report_text)
 
 st.subheader("Model Description")
@@ -605,6 +605,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
