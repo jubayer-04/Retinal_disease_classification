@@ -395,7 +395,7 @@ if uploaded_file:
             st.text("No major abnormalities detected. Continue regular eye checkups and maintain healthy eye care habits.")
 
         st.subheader("Disclaimer:")
-        st.markdown("**This result is AI-assisted and not a medical diagnosis. Please consult a qualified doctor for confirmation. Remember Ai can make mistakes...! Don't trust it blindly......**")
+        st.markdown("**This AI system is for research purposes only and does not replace professional medical diagnosis. Please consult a qualified doctor for confirmation. Remember Ai can make mistakes...! Don't trust it blindly......**")
             
     
         st.subheader("Confidence for All Classes")
@@ -605,6 +605,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
