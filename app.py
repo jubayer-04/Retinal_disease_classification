@@ -369,7 +369,10 @@ if uploaded_file:
         else:
             class_index = np.argmax(probabilities)
         predicted_class = class_names[class_index]
-        confidence = np.max(probabilities)
+        if class_index == glaucoma_index:
+            confidence = probabilities[glaucoma_index]
+        else:
+            confidence = np.max(probabilities)
         st.session_state["predicted_class"] = predicted_class
         st.session_state["confidence"] = confidence
         st.session_state["uploaded_image"] = image
@@ -602,6 +605,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
