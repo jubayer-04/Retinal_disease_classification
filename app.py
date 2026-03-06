@@ -360,7 +360,7 @@ if uploaded_file:
     if predict_clicked:
     # your prediction code here
         prediction = model.predict(img_array)
-        probabilitites = prediction[0]
+        probabilities = prediction[0]
         glaucoma_index = 2
         glaucoma_threshold = 0.40
 
@@ -369,7 +369,7 @@ if uploaded_file:
         else:
             class_index = np.argmax(probabilities)
         predicted_class = class_names[class_index]
-        confidence = np.max(probabilitites)
+        confidence = np.max(probabilities)
         st.session_state["predicted_class"] = predicted_class
         st.session_state["confidence"] = confidence
         st.session_state["uploaded_image"] = image
@@ -602,6 +602,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
