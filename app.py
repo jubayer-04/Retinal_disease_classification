@@ -399,7 +399,7 @@ if uploaded_file:
     
         fig = plt.figure(figsize=(3.5, 2.2))  # smaller figure
 
-        plt.bar(class_names, probabilitites * 100, width=1)
+        plt.bar(class_names, probabilities * 100, width=1)
         
         plt.xticks(rotation=45, fontsize=5)
         plt.yticks(fontsize=5)
@@ -602,6 +602,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+
 
 
 
